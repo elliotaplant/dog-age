@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>When are my dog and I the same age?</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-gray-100 p-8">
+    <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+      <h1 class="text-2xl font-bold mb-6">
+        When are my dog and I the same age?
+      </h1>
+
+      <div class="mb-4">
+        <label for="myAge" class="block text-gray-700 font-bold mb-2"
+          >My age:</label
+        >
+        <input
+          type="date"
+          id="myAge"
+          name="myAge"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label for="dogAge" class="block text-gray-700 font-bold mb-2"
+          >Dog's age:</label
+        >
+        <input
+          type="date"
+          id="dogAge"
+          name="dogAge"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <div class="mb-6">
+        <label for="humanToDogRatio" class="block text-gray-700 font-bold mb-2"
+          >Human to dog year ratio:</label
+        >
+        <input
+          type="number"
+          id="humanToDogRatio"
+          name="humanToDogRatio"
+          value="7"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <div class="flex justify-between">
+        <button
+          onclick="calculateSameAge()"
+          class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          Calculate
+        </button>
+        <button
+          onclick="clearForm()"
+          class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-500"
+        >
+          Recalculate
+        </button>
+      </div>
+
+      <p id="result" class="mt-6 text-lg"></p>
+    </div>
+
+    <script>
+      function calculateSameAge() {
+        const myAgeInput = document.getElementById("myAge");
+        const dogAgeInput = document.getElementById("dogAge");
+        const humanToDogRatioInput = document.getElementById("humanToDogRatio");
+        const resultElement = document.getElementById("result");
+
+        const myAge = new Date(myAgeInput.value);
+        const dogAge = new Date(dogAgeInput.value);
+        const humanToDogRatio = Number(humanToDogRatioInput.value);
+
+        const myAgeInDays = (new Date() - myAge) / (1000 * 60 * 60 * 24);
+        const dogAgeInDays = (new Date() - dogAge) / (1000 * 60 * 60 * 24);
+
+        const daysTillSameAge =
+          (myAgeInDays - dogAgeInDays * humanToDogRatio) /
+          (humanToDogRatio - 1);
+
+        const sameAgeDate = new Date();
+        sameAgeDate.setDate(sameAgeDate.getDate() + Math.ceil(daysTillSameAge));
+
+        const currentDate = new Date();
+        let resultText = "";
+
+        if (sameAgeDate > currentDate) {
+          resultText = `You and your dog will be the same age on ${sameAgeDate.toDateString()}.`;
+        } else if (sameAgeDate < currentDate) {
+          resultText = `You and your dog were the same age on ${sameAgeDate.toDateString()}.`;
+        } else {
+          resultText = "You and your dog are the same age today!";
+        }
+
+        resultElement.textContent = resultText;
+      }
+
+      function clearForm() {
+        document.getElementById("myAge").value = "";
+        document.getElementById("dogAge").value = "";
+        document.getElementById("humanToDogRatio").value = "7";
+        document.getElementById("result").textContent = "";
+      }
+    </script>
+  </body>
+</html>
