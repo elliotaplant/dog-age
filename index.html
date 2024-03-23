@@ -3,15 +3,16 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>When are my dog and I the same age?</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
-  <body class="bg-gray-100 p-8">
+  <body class="bg-gray-100 p-4">
     <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
-      <h1 class="text-2xl font-bold mb-6">
+      <h1 class="text-xl sm:text-2xl font-bold mb-6 text-center">
         When are my dog and I the same age?
       </h1>
 
@@ -52,22 +53,14 @@
         />
       </div>
 
-      <div class="flex justify-between">
-        <button
-          onclick="calculateSameAge()"
-          class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
-          Calculate
-        </button>
-        <button
-          onclick="clearForm()"
-          class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-500"
-        >
-          Recalculate
-        </button>
-      </div>
+      <button
+        onclick="calculateSameAge()"
+        class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg"
+      >
+        Calculate
+      </button>
 
-      <p id="result" class="mt-6 text-lg"></p>
+      <p id="result" class="mt-6 text-center text-lg"></p>
     </div>
 
     <script>
@@ -95,14 +88,14 @@
         let resultText = "";
 
         if (sameAgeDate > currentDate) {
-          resultText = `You and your dog will be the same age on ${sameAgeDate.toDateString()}.`;
+          resultText = `You and your dog will be the same age on <b>${sameAgeDate.toDateString()}</b>.`;
         } else if (sameAgeDate < currentDate) {
-          resultText = `You and your dog were the same age on ${sameAgeDate.toDateString()}.`;
+          resultText = `You and your dog were the same age on <b>${sameAgeDate.toDateString()}</b>.`;
         } else {
           resultText = "You and your dog are the same age today!";
         }
 
-        resultElement.textContent = resultText;
+        resultElement.innerHTML = resultText;
       }
 
       function clearForm() {
