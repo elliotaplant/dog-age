@@ -5,17 +5,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>When are my dog and I the same age?</title>
+    <title>When are my dog and I the same age? - Dog Age Calculator</title>
+    <meta
+      name="description"
+      content="Calculate when you and your dog will be the same age using our easy-to-use dog age calculator. Simply enter your age, your dog's age, and the human-to-dog year ratio to find out the special date!"
+    />
 
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
   <body class="bg-gray-100 p-4">
-    <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
-      <h1 class="text-xl sm:text-2xl font-bold mb-6 text-center">
-        When are my dog and I the same age?
-      </h1>
+    <h1 class="text-xl sm:text-2xl font-bold mb-6 text-center">
+      When are my dog and I the same age?
+    </h1>
 
+    <div class="max-w-md mx-auto mb-6 bg-white p-6 rounded-lg shadow-md">
       <div class="mb-4">
         <label for="myAge" class="block text-gray-700 font-bold mb-2"
           >My age:</label
@@ -62,6 +66,19 @@
 
       <p id="result" class="mt-6 text-center text-lg"></p>
     </div>
+
+    <p class="mb-6">
+      Have you ever wondered when you and your furry friend will be the same
+      age? Our dog age calculator makes it easy to find out! Follow these simple
+      steps:
+    </p>
+
+    <ol class="mb-6 list-decimal ml-4">
+      <li>Enter your birth date in the "My age" field.</li>
+      <li>Enter your dog's birth date in the "Dog's age" field.</li>
+      <li>If needed, adjust the human-to-dog year ratio (default is 7).</li>
+      <li>Click the "Calculate" button and see the magic happen!</li>
+    </ol>
 
     <script>
       function calculateSameAge() {
